@@ -4,7 +4,7 @@ RUN apt update \
   && add-apt-repository ppa:rmescandon/yq \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
   && apt update \
-  && apt -y install jq curl \
+  && apt -y install jq curl rsync \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/* \
   && curl --silent -L https://github.com/mikefarah/yq/releases/download/v4.40.5/yq_linux_amd64 -o /usr/local/bin/yq \
