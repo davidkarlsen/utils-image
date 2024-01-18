@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20231128
+FROM ubuntu:jammy-20240111
 RUN apt update \
   && apt -y install software-properties-common curl \
   && add-apt-repository ppa:rmescandon/yq \
