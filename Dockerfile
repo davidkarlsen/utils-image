@@ -1,7 +1,6 @@
-FROM ubuntu:jammy-20240530
+FROM ubuntu:noble-20240605
 RUN apt update \
   && apt -y install software-properties-common curl \
-  && add-apt-repository ppa:rmescandon/yq \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
   && apt update \
   && apt -y install jq curl rsync \
