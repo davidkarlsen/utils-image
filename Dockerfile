@@ -7,7 +7,7 @@ RUN apt update \
   && apt -y install jq curl rsync \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/* \
-  && curl --silent -L https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 -o /usr/local/bin/yq \
+  && curl --silent -L https://github.com/mikefarah/yq/releases/download/v4.44.2/yq_linux_amd64 -o /usr/local/bin/yq \
   && chmod a+x /usr/local/bin/yq \
   && curl -kLso /tmp/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xzf /tmp/azcopy_v10.tar.gz --strip-components=1 -C /usr/local/bin && chmod a+x /usr/local/bin/azcopy && rm /tmp/azcopy_v10.tar.gz \
   && curl -kLso /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.14/openshift-client-linux.tar.gz && tar -xzf /tmp/oc.tar.gz -C /usr/local/bin oc \
