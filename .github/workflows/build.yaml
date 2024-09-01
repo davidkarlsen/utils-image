@@ -20,6 +20,7 @@ jobs:
       packages: write
       statuses: write
       attestations: write
+      id-token: write
     env:
       IMAGE: ghcr.io/davidkarlsen/utils-image
     steps:
