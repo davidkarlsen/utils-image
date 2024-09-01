@@ -19,6 +19,10 @@ jobs:
       contents: write
       packages: write
       statuses: write
+      attestations: write
+      id-token: write
+    env:
+      IMAGE: ghcr.io/davidkarlsen/utils-image
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +45,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/davidkarlsen/utils-image
+            ${{ env.IMAGE }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=tag
@@ -58,3 +62,13 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Attest
+        uses: actions/attest@v1
+        id: attest
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.build-push.outputs.digest }}
+          push-to-registry: true
+          predicate-type: 'https://in-toto.io/attestation/release/v0.1'
+          predicate: '{"purl":"pkg:oci/..."}'
