@@ -3,7 +3,7 @@ RUN apt update \
   && apt -y install curl \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
   && curl --silent -L https://github.com/Azure/azure-storage-azcopy/releases/download/v10.30.0/azcopy-10.30.0.x86_64.deb -o /tmp/azcopy.dpkg && dpkg -i /tmp/azcopy.dpkg && rm /tmp/azcopy.dpkg \
-  && apt -y install jq rsync \
+  && apt -y install jq rsync keyutils \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/* \
   && curl --silent -L https://github.com/mikefarah/yq/releases/download/v4.46.1/yq_linux_amd64 -o /usr/local/bin/yq \
