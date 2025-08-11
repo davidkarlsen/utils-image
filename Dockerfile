@@ -3,6 +3,7 @@ RUN apt update \
   && apt -y install curl \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
   && curl --silent -L https://github.com/Azure/azure-storage-azcopy/releases/download/v10.30.0/azcopy-10.30.0.x86_64.deb -o /tmp/azcopy.dpkg && dpkg -i /tmp/azcopy.dpkg && rm /tmp/azcopy.dpkg \
+  && curl -sL https://aka.ms/InstallAzureCLIDeb | bash \
   && apt -y install jq rsync keyutils \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/* \
