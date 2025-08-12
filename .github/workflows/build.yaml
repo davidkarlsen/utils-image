@@ -24,7 +24,7 @@ jobs:
     env:
       IMAGE: ghcr.io/davidkarlsen/utils-image
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
