@@ -1,4 +1,4 @@
-FROM ubuntu:noble-20251001
+FROM ubuntu:noble-20251013
 RUN apt update \
   && apt -y install curl jq rsync keyutils easy-rsa \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
