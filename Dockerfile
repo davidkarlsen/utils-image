@@ -1,7 +1,6 @@
 FROM ubuntu:noble-20251013
 RUN apt update \
   && apt -y install ca-certificates curl apt-transport-https lsb-release gnupg jq rsync keyutils easy-rsa \
-  && mkdir -p /etc/apt/keyrings \
   && curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg \
   && chmod go+r /etc/apt/keyrings/microsoft.gpg \
   && echo "Types: deb\nURIs: https://packages.microsoft.com/repos/azure-cli/\nSuites: $(lsb_release -cs)\nComponents: main\nSigned-By: /etc/apt/keyrings/microsoft.gpg" > /etc/apt/sources.list.d/azure-cli.sources \
