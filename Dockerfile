@@ -1,9 +1,8 @@
 FROM ubuntu:noble-20251013
 RUN apt update \
   && apt -y install ca-certificates curl apt-transport-https lsb-release gnupg jq rsync keyutils easy-rsa \
-  && curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg \
-  && chmod go+r /etc/apt/keyrings/microsoft.gpg \
-  && echo "Types: deb\nURIs: https://packages.microsoft.com/repos/azure-cli/\nSuites: $(lsb_release -cs)\nComponents: main\nSigned-By: /etc/apt/keyrings/microsoft.gpg" > /etc/apt/sources.list.d/azure-cli.sources \
+  && curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | install -m 0644 /dev/stdin /etc/apt/keyrings/microsoft.gpg \
+  && echo "Types: deb\nURIs: https://packages.microsoft.com/repos/azure-cli/\nSuites: $(lsb_release -cs)\nComponents: main\nSigned-By: /etc/apt/keyrings/microsoft.gpg" | install -m 0644 /dev/stdin /etc/apt/sources.list.d/azure-cli.sources \
   && apt update \
   && apt -y install azure-cli \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
