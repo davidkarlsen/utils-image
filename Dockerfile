@@ -10,6 +10,6 @@ RUN apt update \
   && curl --silent -L https://github.com/mikefarah/yq/releases/download/v4.50.1/yq_linux_amd64 -o /usr/local/bin/yq \
   && chmod a+x /usr/local/bin/yq \
   && curl -kLso /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.20/openshift-client-linux.tar.gz && tar -xzf /tmp/oc.tar.gz -C /usr/local/bin oc && rm /tmp/oc.tar.gz \
-  && curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
+  && curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/*
