@@ -1,8 +1,14 @@
 FROM ubuntu:noble-20260410
+# azure-cli Suites is hardcoded to "noble" rather than $(lsb_release -cs):
+# the packages.microsoft.com/repos/azure-cli repo only publishes per-codename
+# suites and has no distro-agnostic (stable/lts) suite. It currently has no
+# suite for newer releases (e.g. resolute/26.04), so a dynamic codename would
+# 404. The az package is distro-independent, so the latest available suite
+# (noble) works on newer bases too. Bump to a newer suite once MS publishes one.
 RUN apt update \
   && apt -y install ca-certificates curl apt-transport-https lsb-release gnupg jq rsync keyutils easy-rsa \
   && curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | install -m 0644 /dev/stdin /etc/apt/keyrings/microsoft.gpg \
-  && echo "Types: deb\nURIs: https://packages.microsoft.com/repos/azure-cli/\nSuites: $(lsb_release -cs)\nComponents: main\nSigned-By: /etc/apt/keyrings/microsoft.gpg" | install -m 0644 /dev/stdin /etc/apt/sources.list.d/azure-cli.sources \
+  && echo "Types: deb\nURIs: https://packages.microsoft.com/repos/azure-cli/\nSuites: noble\nComponents: main\nSigned-By: /etc/apt/keyrings/microsoft.gpg" | install -m 0644 /dev/stdin /etc/apt/sources.list.d/azure-cli.sources \
   && apt update \
   && apt -y install azure-cli \
   && cd /usr/local/bin && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod a+x kubectl \
