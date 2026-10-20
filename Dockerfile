@@ -1,4 +1,4 @@
-FROM ubuntu:resolute-20260927
+FROM ubuntu:resolute-20261006
 # azure-cli Suites is hardcoded to "noble" rather than $(lsb_release -cs):
 # the packages.microsoft.com/repos/azure-cli repo only publishes per-codename
 # suites and has no distro-agnostic (stable/lts) suite. It currently has no
