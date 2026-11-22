@@ -1,4 +1,4 @@
-FROM ubuntu:resolute-20261024.1
+FROM ubuntu:resolute-20261105.1
 RUN apt update \
   && apt -y install ca-certificates curl apt-transport-https lsb-release gnupg jq rsync keyutils easy-rsa \
   && curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | install -m 0644 /dev/stdin /etc/apt/keyrings/microsoft.gpg \
